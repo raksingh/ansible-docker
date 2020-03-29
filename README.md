@@ -19,6 +19,9 @@ Volume
 
 
 Ansible directory structure (prefined with ENV variables)
+Based on the Ansible recommended directory layout.
+https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html#alternative-directory-layout
+
 
 ```
 inventories/

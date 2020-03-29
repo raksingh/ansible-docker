@@ -76,7 +76,7 @@ RUN ssh-keygen -t rsa -b 4096 -q -N '' -f ~/.ssh/id_rsa 2> /dev/null
 
 
 # Define the inventory and role volumes.
-VOLUME ["${ANSIBLE_INVENTORY}", "${ANSIBLE_ROLES_PATH}"]
+VOLUME ["${ANSIBLE_BASE_DIR}"]
 
 
 # Since there is no process to keep running, just run a tail.

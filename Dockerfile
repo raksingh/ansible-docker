@@ -9,6 +9,9 @@ FROM python:3.8.2-alpine3.11
 
 # Define environment variables to be used in the build and available within
 # the container.
+# Based on the Ansible recommended directory structure.
+# https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html#alternative-directory-layout
+
 ENV ANSIBLE_VERSION="2.9.6" \
     MOLECULE_VERSION="3.0.2" \
     ANSIBLE_USER="ansible" \
@@ -70,16 +73,6 @@ RUN mkdir -p ${ANSIBLE_BASE_DIR} && \
 USER ${ANSIBLE_USER}
 # generate RSA key
 RUN ssh-keygen -t rsa -b 4096 -q -N '' -f ~/.ssh/id_rsa 2> /dev/null
-
-
-# Change to the Ansible base directory and create the recommended directory
-# structure.
-WORKDIR ${ANSIBLE_BASE_DIR}
-RUN mkdir -p ${ANSIBLE_INVENTORY} \
-             ${ANSIBLE_ROLES_PATH} \
-             ${ANSIBLE_LIBRARY} \
-             ${ANSIBLE_MODULE_UTILS} \
-             ${ANSIBLE_FILTER_PLUGINS}
 
 
 # Define the inventory and role volumes.
